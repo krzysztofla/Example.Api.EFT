@@ -13,4 +13,8 @@
     <Folder Include="Repositories\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Example.Shared.EFT\Example.Shared.EFT.csproj" />
+  </ItemGroup>
+
 </Project>

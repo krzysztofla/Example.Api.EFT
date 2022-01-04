@@ -1,15 +1,11 @@
 ﻿using Example.Core.EFT.Value_Object;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Example.Shared.EFT.Domain;
 
 namespace Example.Core.EFT.Entities
 {
-    internal class Item
+    internal class Item : AggregateRoot<Guid>
     {
-        public Guid id { get; private set; }    
+        public Guid id { get; private set; }
         private readonly Price _price;
 
         private readonly Description _description;
