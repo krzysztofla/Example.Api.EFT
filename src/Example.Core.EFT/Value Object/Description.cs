@@ -15,5 +15,9 @@ namespace Example.Core.EFT.Value_Object
             }
             Value = value;
         }
+
+        public static implicit operator string(Description description) => description.Value;
+
+        public static implicit operator Description(string description) => new(description);
     }
 }

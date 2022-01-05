@@ -6,10 +6,10 @@ namespace Example.Core.EFT.Value_Object
 {
     internal record Price
     {
-        public long Value { get; }
+        public int Value { get; }
         public Currency Currency { get; }
 
-        public Price(long price, Currency currency)
+        public Price(int price, Currency currency)
         {
             Value = SetPrice(price);
             Currency = SetCurrency(currency);
@@ -20,7 +20,7 @@ namespace Example.Core.EFT.Value_Object
             return currency;
         }
 
-        private long SetPrice(long price)
+        private int SetPrice(int price)
         {
             if(price <= 0 )
             {

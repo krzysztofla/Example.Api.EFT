@@ -1,20 +1,41 @@
-﻿using Example.Core.EFT.Value_Object;
+﻿using Example.Core.EFT.Events;
+using Example.Core.EFT.Value_Object;
 using Example.Shared.EFT.Domain;
 
 namespace Example.Core.EFT.Entities
 {
-    internal class Item : AggregateRoot<Guid>
+    internal class Item : AggregateRoot<ItemId>
     {
-        public Guid id { get; private set; }
-        private readonly Price _price;
+        public ItemId _id { get; private set; }
+        
+        private Price _price;
+        private ItemType _type;
+        private Description _description;
 
-        private readonly Description _description;
-
-        public Item(Guid id, Price price, Description description)
+        internal Item(Guid id, Price price, ItemType type, Description description)
         {
-            id = id;
+            _id = id;
             _price = price;
+            _type = type;
             _description = description;
+        }
+
+        public void UpdatePrice(Price price)
+        {
+            _price = price;
+            AddEvent(new ItemPriceUpdated(_price));
+        }
+
+        public void UpdateType(ItemType type)
+        {
+            _type = type;
+            AddEvent(new ItemTypeUpdated(_type));
+        }
+
+        public void UpdateDescription(Description description)
+        {
+            _description = description;
+            AddEvent(new ItemDescriptionUpdated(_description));
         }
     }
 }
