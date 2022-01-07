@@ -4,7 +4,7 @@ using Example.Shared.EFT.Domain;
 
 namespace Example.Core.EFT.Entities
 {
-    internal class Item : AggregateRoot<ItemId>
+    public class Item : AggregateRoot<ItemId>
     {
         public ItemId _id { get; private set; }
         

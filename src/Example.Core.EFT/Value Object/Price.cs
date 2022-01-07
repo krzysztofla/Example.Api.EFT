@@ -4,7 +4,7 @@ using Example.Core.EFT.Exceptions;
 
 namespace Example.Core.EFT.Value_Object
 {
-    internal record Price
+    public record Price
     {
         public int Value { get; }
         public Currency Currency { get; }

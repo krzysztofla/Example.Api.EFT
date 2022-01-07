@@ -1,20 +1,21 @@
 ﻿using Example.Core.EFT.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Example.Core.EFT.Repositories
 {
-    internal interface IItemRepository
+    public interface IItemRepository
     {
-        Task<Item> GetItemByNameAsync(string name);
+        Task<Item> GetAsync(string name);
 
-        Task<Item> GetItemByIdAsync(Guid id);
+        Task<Item> GetAsync(Guid id);
 
-        Task<IEnumerable<Item>> GetItemsByPriceRange(int minValue, int maxValue);
+        Task<IEnumerable<Item>> GetAsync(int minValue, int maxValue);
 
-        Task<IEnumerable<Item>> GetItemsByType();
+        Task<IEnumerable<Item>> GetAsync(Type type);
+
+        Task<IEnumerable<Item>> AddAsync(Item item);
+
+        Task<IEnumerable<Item>> UpdateAsync(Item item);
+
+        Task<IEnumerable<Item>> RemoveAsync(Item item);
     }
 }

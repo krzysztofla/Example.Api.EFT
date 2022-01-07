@@ -3,7 +3,7 @@ using Example.Core.EFT.Exceptions;
 
 namespace Example.Core.EFT.Value_Object
 {
-    internal class Description
+    public class Description
     {
         public string Value { get; }
 
