@@ -1,7 +1,7 @@
 ﻿namespace Example.Shared.EFT.Queries
 {
-    public interface IQueryHandler
+    public interface IQueryHandler<in TQuery, TResult> where TQuery : class, IQuery<TResult>
     {
-        Task<TResult> HandleAsync<TResult>(IQuery<TResult> query); 
+        Task<TResult> HandleAsync(TQuery query, CancellationToken token); 
     }
 }
