@@ -7,14 +7,16 @@ namespace Example.Core.EFT.Entities
     public class Item : AggregateRoot<ItemId>
     {
         public ItemId _id { get; private set; }
-        
+
+        private ItemName _name;
         private Price _price;
         private ItemType _type;
         private Description _description;
 
-        internal Item(Guid id, Price price, ItemType type, Description description)
+        internal Item(Guid id, ItemName name, Price price, ItemType type, Description description)
         {
             _id = id;
+            _name = name;
             _price = price;
             _type = type;
             _description = description;
@@ -24,6 +26,12 @@ namespace Example.Core.EFT.Entities
         {
             _price = price;
             AddEvent(new ItemPriceUpdated(_price));
+        }
+
+        public void UpdateName(ItemName name)
+        {
+            _name = name;
+            AddEvent(new ItemNameUpdated(_name));
         }
 
         public void UpdateType(ItemType type)
