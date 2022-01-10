@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Queries\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Example.Core.EFT\Example.Core.EFT.csproj" />
     <ProjectReference Include="..\Example.Shared.EFT\Example.Shared.EFT.csproj" />
   </ItemGroup>

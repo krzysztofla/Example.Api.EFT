@@ -4,14 +4,12 @@ namespace Example.Core.EFT.Repositories
 {
     public interface IItemRepository
     {
-        Task<Item> GetAsync(Guid id);
+        Task<Item> GetAsync(Guid id, CancellationToken token);
 
-        Task<IEnumerable<Item>> GetAsync(int minValue, int maxValue);
+        Task AddAsync(Item item, CancellationToken token);
 
-        Task AddAsync(Item item);
+        Task<IEnumerable<Item>> UpdateAsync(Item item, CancellationToken token);
 
-        Task<IEnumerable<Item>> UpdateAsync(Item item);
-
-        Task<IEnumerable<Item>> RemoveAsync(Item item);
+        Task<IEnumerable<Item>> RemoveAsync(Item item, CancellationToken token);
     }
 }

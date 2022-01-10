@@ -13,19 +13,19 @@ namespace Example.Application.EFT.Commands.Handlers
     {
         private readonly IItemRepository _itemRepository;
         private readonly IItemFactory _itemFactory;
-        private readonly IItemReadService _itemService;
+        private readonly IItemReadService _itemReadService;
 
-        public CreateItemHandler(IItemRepository itemRepository, IItemFactory itemFactory, IItemReadService itemService)
+        public CreateItemHandler(IItemRepository itemRepository, IItemFactory itemFactory, IItemReadService itemReadService)
         {
             _itemRepository = itemRepository;
             _itemFactory = itemFactory;
-            _itemService = itemService;
+            _itemReadService = itemReadService;
         }
 
         public async Task HandleAsync(CreateItem command, CancellationToken token)
         {
             var (Id, name, description, price, itemType, promoCode) = command;
-            var exists = await _itemService.CheckIfItemExistsAsync(name);
+            var exists = await _itemReadService.CheckIfItemExistsAsync(name);
 
             if (exists)
             {
@@ -36,7 +36,7 @@ namespace Example.Application.EFT.Commands.Handlers
             var itemDescription = new Description(description);
             Item newItem;
 
-            if (promoCode == "promo_code_here")
+            if (promoCode == "code_here")
             {
                 newItem = _itemFactory.CreateItemWithPricePolicy(Id, itemPrice, (ItemType)itemType, itemDescription);
             }
@@ -46,7 +46,7 @@ namespace Example.Application.EFT.Commands.Handlers
             }
 
 
-            await _itemRepository.AddAsync(newItem);
+            await _itemRepository.AddAsync(newItem, token);
         }
     }
 }
