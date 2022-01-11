@@ -12,15 +12,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="EF\Models\" />
-    <Folder Include="EF\Config\" />
     <Folder Include="EF\Migrations\" />
     <Folder Include="EF\Services\" />
     <Folder Include="EF\Repositories\" />
-    <Folder Include="EF\Queries\" />
     <Folder Include="EF\Options\" />
     <Folder Include="Logging\" />
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Example.Core.EFT\Example.Core.EFT.csproj" />
+    <ProjectReference Include="..\Example.Shared.EFT\Example.Shared.EFT.csproj" />
   </ItemGroup>
 
 </Project>

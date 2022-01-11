@@ -13,6 +13,11 @@ namespace Example.Core.EFT.Entities
         private ItemType _type;
         private Description _description;
 
+        private Item()
+        {
+
+        }
+
         internal Item(Guid id, ItemName name, Price price, ItemType type, Description description)
         {
             _id = id;
