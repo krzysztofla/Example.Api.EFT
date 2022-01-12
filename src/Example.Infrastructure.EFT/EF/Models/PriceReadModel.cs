@@ -4,5 +4,21 @@
     {
         public int Value { get; set; }
         public CurrencyReadModel Currency { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Value},{Currency}";
+        }
+
+        public static PriceReadModel Build(string price)
+        {
+            var priceValues = price.Split(',');
+
+            return new PriceReadModel()
+            {
+                Value = int.Parse(priceValues.Last()),
+                Currency = (CurrencyReadModel)int.Parse(priceValues.Last())
+            };
+        }
     }
 }

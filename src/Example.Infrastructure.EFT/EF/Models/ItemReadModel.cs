@@ -6,7 +6,9 @@
         public int Version { get; set; }
         public ItemNameReadModel ItemName { get; set; }
         public PriceReadModel Price { get; set; }
-        private ItemTypeReadModel ItemType { get; set; }
-        private DescriptionReadModel Description { get; set; }
+        public ItemTypeReadModel ItemType { get; set; }
+        public DescriptionReadModel Description { get; set; }
+
+
     }
 }

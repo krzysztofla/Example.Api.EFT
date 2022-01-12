@@ -1,4 +1,5 @@
-﻿using Example.Infrastructure.EFT.EF.Models;
+﻿using Example.Infrastructure.EFT.EF.Config;
+using Example.Infrastructure.EFT.EF.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Example.Infrastructure.EFT.EF.Context
@@ -14,7 +15,8 @@ namespace Example.Infrastructure.EFT.EF.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.HasDefaultContainer("items");
+            builder.HasDefaultContainer("Items");
+            builder.ApplyConfiguration(new ReadConfig());
             base.OnModelCreating(builder);
         }
 

@@ -19,5 +19,10 @@ namespace Example.Core.EFT.Value_Object
         public static implicit operator string(Description description) => description.Value;
 
         public static implicit operator Description(string description) => new(description);
+
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
     }
 }

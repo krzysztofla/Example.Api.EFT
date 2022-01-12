@@ -4,30 +4,22 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Example.Infrastructure.EFT.EF.Config
 {
-    internal class ReadConfig : IEntityTypeConfiguration<ItemReadModel>,
-                                IEntityTypeConfiguration<DescriptionReadModel>,
-                                IEntityTypeConfiguration<ItemNameReadModel>,
-                                IEntityTypeConfiguration<PriceReadModel>
+    internal class ReadConfig : IEntityTypeConfiguration<ItemReadModel>
     {
         public void Configure(EntityTypeBuilder<ItemReadModel> builder)
         {
-            throw new NotImplementedException();
-        }
+            builder.ToContainer("Items");
+            builder.HasKey(k => k.Id);
 
-        public void Configure(EntityTypeBuilder<PriceReadModel> builder)
-        {
-            throw new NotImplementedException();
-        }
+            builder.Property(p => p.ItemName)
+                   .HasConversion(n => n.ToString(), l => ItemNameReadModel.Build(l));
 
-        public void Configure(EntityTypeBuilder<ItemNameReadModel> builder)
-        {
-            throw new NotImplementedException();
-        }
+            builder.Property(i => i.Price)
+                   .HasConversion(p => p.ToString(), p => PriceReadModel.Build(p));
 
-        public void Configure(EntityTypeBuilder<DescriptionReadModel> builder)
-        {
-            throw new NotImplementedException();
-        }
+            builder.Property(i => i.Description)
+                   .HasConversion(p => p.ToString(), p => DescriptionReadModel.Build(p));
 
+        }
     }
 }
