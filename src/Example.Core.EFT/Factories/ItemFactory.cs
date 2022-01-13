@@ -12,9 +12,9 @@ namespace Example.Core.EFT.Factories
         public ItemFactory(IEnumerable<IItemPolicy> policies)
             => _policies = policies;
 
-        public Item CreateItem(ItemId id, Price price, ItemType type, Description description) => new(id, price, type, description);
+        public Item CreateItem(ItemId id, ItemName name, Price price, ItemType type, Description description) => new(id, name, price, type, description);
 
-        public Item CreateItemWithPricePolicy(ItemId id, Price price, ItemType type, Description description)
+        public Item CreateItemWithPricePolicy(ItemId id, ItemName name, Price price, ItemType type, Description description)
         {
             var policyData = new PolicyData(price, type);
             var applicablePolicies = _policies.Where(p => p.IsApplicable(policyData) && p is IPricePolicy).ToList();
@@ -25,7 +25,7 @@ namespace Example.Core.EFT.Factories
                 priceWithPollicies = policy.Apply(policyData);
             }
 
-            return new Item(id, priceWithPollicies, policyData.Type, description);
+            return new Item(id, name, priceWithPollicies, policyData.Type, description);
         }
     }
 }
