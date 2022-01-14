@@ -10,7 +10,7 @@ namespace Example.Infrastructure.EFT.EF.Config
     {
         public void Configure(EntityTypeBuilder<Item> builder)
         {
-            builder.ToContainer("Items");
+            builder.ToTable("Items");
 
             builder.HasKey(p => p.Id);
 

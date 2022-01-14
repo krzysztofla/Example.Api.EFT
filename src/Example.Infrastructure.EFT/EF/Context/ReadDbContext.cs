@@ -10,14 +10,14 @@ namespace Example.Infrastructure.EFT.EF.Context
 
         public ReadDbContext(DbContextOptions<ReadDbContext> options) : base(options)
         {
-
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.HasDefaultContainer("Items");
-            builder.ApplyConfiguration(new ReadConfig());
-            base.OnModelCreating(builder);
+            builder.HasDefaultSchema("items");
+
+            var configuration = new ReadConfig();
+            builder.ApplyConfiguration<ItemReadModel>(configuration);
         }
 
     }

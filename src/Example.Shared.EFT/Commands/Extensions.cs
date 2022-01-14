@@ -16,7 +16,7 @@ namespace Example.Shared.EFT.Commands
             return services;
         }
 
-        public static IServiceCollection AddApplication(this IServiceCollection services)
+        public static IServiceCollection RegisterApplication(this IServiceCollection services)
         {
             services.RegisterCommands();
             return services;

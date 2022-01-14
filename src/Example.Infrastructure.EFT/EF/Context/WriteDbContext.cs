@@ -7,6 +7,7 @@ namespace Example.Infrastructure.EFT.EF.Context
     internal class WriteDbContext : DbContext
     {
         public DbSet<Item> Items { get; set; }
+
         public WriteDbContext(DbContextOptions<WriteDbContext> options) : base(options)
         {
 
@@ -14,9 +15,10 @@ namespace Example.Infrastructure.EFT.EF.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.HasDefaultContainer("Items");
-            builder.ApplyConfiguration(new WriteConfig());
-            base.OnModelCreating(builder);
+            builder.HasDefaultSchema("items");
+
+            var configuration = new WriteConfig();
+            builder.ApplyConfiguration<Item>(configuration);
         }
 
     }

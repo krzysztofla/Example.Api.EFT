@@ -5,7 +5,7 @@ namespace Example.Infrastructure.EFT.EF.Queries
 {
     public static class Extensions
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services)
+        public static IServiceCollection AddQueries(this IServiceCollection services)
         {
             services.RegisterQueries();
             return services;

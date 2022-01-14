@@ -8,7 +8,7 @@ namespace Example.Infrastructure.EFT.EF.Config
     {
         public void Configure(EntityTypeBuilder<ItemReadModel> builder)
         {
-            builder.ToContainer("Items");
+            builder.ToTable("Items");
             builder.HasKey(k => k.Id);
 
             builder.Property(p => p.ItemName)

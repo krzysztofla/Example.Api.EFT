@@ -1,6 +1,6 @@
 ﻿namespace Example.Infrastructure.EFT.EF.Models
 {
-    internal enum CurrencyReadModel
+    public enum CurrencyReadModel
     {
         PLN = 0,
         RUB = 1,
