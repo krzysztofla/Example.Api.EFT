@@ -5,7 +5,7 @@ namespace Example.Core.EFT.Value_Object
 {
     public record ItemId
     {
-        public Guid Value { get; protected set; }
+        public Guid Value { get; }
 
         public ItemId(Guid id)
         {
@@ -14,7 +14,6 @@ namespace Example.Core.EFT.Value_Object
                 throw new EmptyIdException(ExceptionMessages.EmptyIdValue);
             }
             Value = id;
-
         }
 
         public static implicit operator Guid(ItemId id) => id.Value;

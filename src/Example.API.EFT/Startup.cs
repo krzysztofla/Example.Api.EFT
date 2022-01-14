@@ -16,6 +16,7 @@ namespace Example.API.EFT
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddShared();
             services.RegisterInfrastructure(Configuration);
             services.RegisterApplication();
             services.AddControllers();

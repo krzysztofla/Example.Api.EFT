@@ -10,19 +10,32 @@ namespace Example.Infrastructure.EFT.EF.Config
     {
         public void Configure(EntityTypeBuilder<Item> builder)
         {
-            builder.ToTable("Items");
 
             builder.HasKey(p => p.Id);
 
+            builder
+               .Property(pl => pl.Id)
+               .HasConversion(id => id.Value, id => new ItemId(id));
+
             var nameConverter = new ValueConverter<ItemName, string>(v => v.ToString(), v => new ItemName(v));
-            builder.Property(typeof(ItemName), "_itemName").HasConversion(nameConverter);
+            builder
+                .Property(typeof(ItemName), "_name")
+                .HasConversion(nameConverter)
+                .HasColumnName("ItemName");
 
             var descriptionConverter = new ValueConverter<Description, string>(v => v.ToString(), v => new Description(v));
-            builder.Property(typeof(Description), "_description").HasConversion(descriptionConverter);
+            builder
+                .Property(typeof(Description), "_description")
+                .HasConversion(descriptionConverter)
+                .HasColumnName("Description");
 
             var priceConverter = new ValueConverter<Price, string>(v => v.ToString(), v => Price.Build(v));
-            builder.Property(typeof(Price), "_price").HasConversion(priceConverter);
+            builder
+                .Property(typeof(Price), "_price")
+                .HasConversion(priceConverter)
+                .HasColumnName("Price");
 
+            builder.ToTable("Items");
 
         }
     }
