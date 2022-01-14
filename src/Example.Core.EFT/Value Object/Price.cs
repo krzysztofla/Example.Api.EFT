@@ -15,6 +15,19 @@ namespace Example.Core.EFT.Value_Object
             Currency = SetCurrency(currency);
         }
 
+        public override string ToString()
+        {
+            return $"{Value},{Currency}";
+        }
+
+        public static Price Build(string price)
+        {
+            var priceValues = price.Split(',');
+            var value = int.Parse(priceValues.Last());
+            var currency = (Currency)int.Parse(priceValues.Last());
+            return new Price(value, currency);
+        }
+
         private Currency SetCurrency(Currency currency)
         {
             return currency;
@@ -22,11 +35,13 @@ namespace Example.Core.EFT.Value_Object
 
         private int SetPrice(int price)
         {
-            if(price <= 0 )
+            if (price <= 0)
             {
                 throw new InvalidPriceException(ExceptionMessages.InvalidPriceValue);
             }
             return price;
         }
+
+
     }
 }

@@ -11,5 +11,10 @@
         public static implicit operator string(ItemName name) => name.Value;
 
         public static implicit operator ItemName(string name) => new(name);
+
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
     }
 }

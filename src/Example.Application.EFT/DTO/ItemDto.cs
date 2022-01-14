@@ -8,7 +8,7 @@
 
         public int Value { get; set; }
 
-        public string Currency { get; set; }
+        public string Price { get; set; }
 
         public string Description { get; set; }
 

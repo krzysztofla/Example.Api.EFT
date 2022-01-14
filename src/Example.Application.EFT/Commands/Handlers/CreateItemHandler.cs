@@ -38,11 +38,11 @@ namespace Example.Application.EFT.Commands.Handlers
 
             if (promoCode == "code_here")
             {
-                newItem = _itemFactory.CreateItemWithPricePolicy(Id, itemPrice, (ItemType)itemType, itemDescription);
+                newItem = _itemFactory.CreateItemWithPricePolicy(Id, name, itemPrice, (ItemType)itemType, itemDescription);
             }
             else
             {
-                newItem = _itemFactory.CreateItem(Id, itemPrice, (ItemType)itemType, itemDescription);
+                newItem = _itemFactory.CreateItem(Id, name, itemPrice, (ItemType)itemType, itemDescription);
             }
 
 

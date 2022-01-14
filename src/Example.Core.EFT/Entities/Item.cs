@@ -6,19 +6,28 @@ namespace Example.Core.EFT.Entities
 {
     public class Item : AggregateRoot<ItemId>
     {
-        public ItemId _id { get; private set; }
+        public ItemId Id { get; private set; }
 
         private ItemName _name;
         private Price _price;
         private ItemType _type;
         private Description _description;
 
-        internal Item(Guid id, ItemName name, Price price, ItemType type, Description description)
+        private Item()
         {
-            _id = id;
-            _name = name;
+
+        }
+
+        internal Item(ItemId id, ItemName name, Price price, ItemType type, Description description) : this(id, name, description)
+        {
             _price = price;
             _type = type;
+        }
+
+        internal Item(ItemId id, ItemName name, Description description)
+        {
+            Id = id;
+            _name = name;
             _description = description;
         }
 

@@ -5,7 +5,7 @@ namespace Example.Core.EFT.Factories
 {
     public interface IItemFactory
     {
-        Item CreateItem(ItemId id, Price price, ItemType type, Description description);
-        Item CreateItemWithPricePolicy(ItemId id, Price price, ItemType type, Description description);
+        Item CreateItem(ItemId id, ItemName name, Price price, ItemType type, Description description);
+        Item CreateItemWithPricePolicy(ItemId id, ItemName name, Price price, ItemType type, Description description);
     }
 }
