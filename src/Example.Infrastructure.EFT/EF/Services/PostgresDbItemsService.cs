@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Example.Infrastructure.EFT.EF.Services
 {
-    internal class CosmosDbItemsService : IItemReadService
+    internal class PostgresDbItemsService : IItemReadService
     {
         private readonly DbSet<ItemReadModel> _items;
 
-        public CosmosDbItemsService(ReadDbContext context)
+        public PostgresDbItemsService(ReadDbContext context)
         {
             _items = context.Items;
         }

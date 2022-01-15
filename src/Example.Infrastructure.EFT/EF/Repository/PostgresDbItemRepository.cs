@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Example.Infrastructure.EFT.EF.Repository
 {
-    internal class CosmosDbRepository : IItemRepository
+    internal class PostgresDbItemRepository : IItemRepository
     {
         private readonly DbSet<Item> _items;
         private readonly WriteDbContext _writeContext;
              
 
-        public CosmosDbRepository(WriteDbContext context)
+        public PostgresDbItemRepository(WriteDbContext context)
         {
             _items = context.Items;
             _writeContext = context;

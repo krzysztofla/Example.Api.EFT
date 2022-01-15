@@ -14,8 +14,8 @@ namespace Example.Infrastructure.EFT.EF
     {
         public static IServiceCollection AddCosmosDb(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<IItemReadService, CosmosDbItemsService>();
-            services.AddScoped<IItemRepository, CosmosDbRepository>();
+            services.AddScoped<IItemReadService, PostgresDbItemsService>();
+            services.AddScoped<IItemRepository, PostgresDbItemRepository>();
 
             var postgresDbOptions = new PostgresDbOptions();
             configuration.GetSection("PostgresDb").Bind(postgresDbOptions);
