@@ -27,6 +27,7 @@ namespace Example.Shared.EFT.Services
                 }
 
                 await dbContext.Database.MigrateAsync(cancellationToken);
+                dbContext.Database.EnsureCreated();
             }
         }
 

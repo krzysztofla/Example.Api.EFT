@@ -32,7 +32,7 @@ namespace Example.API.EFT.Controllers
         }
 
         [HttpPost()]
-        public async Task<ActionResult<ItemDto>> Post(CreateItem command, CancellationToken token)
+        public async Task<ActionResult<ItemDto>> Post([FromBody]CreateItem command, CancellationToken token)
         {
             await _commadDispatcher.DispatchAsync(command, token);
             return CreatedAtAction(nameof(Get), new { id = command.Id}, null);

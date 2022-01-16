@@ -1,4 +1,5 @@
-﻿using Example.Infrastructure.EFT.Extensions;
+﻿using Example.Application.EFT;
+using Example.Infrastructure.EFT.Extensions;
 using Example.Shared.EFT;
 using Example.Shared.EFT.Commands;
 using Microsoft.OpenApi.Models;
@@ -17,8 +18,8 @@ namespace Example.API.EFT
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddShared();
-            services.RegisterInfrastructure(Configuration);
             services.RegisterApplication();
+            services.RegisterInfrastructure(Configuration);
             services.AddControllers();
 
             services.AddSwaggerGen(c =>

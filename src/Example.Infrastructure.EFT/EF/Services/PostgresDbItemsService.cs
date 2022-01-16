@@ -18,7 +18,7 @@ namespace Example.Infrastructure.EFT.EF.Services
 
         public async Task<bool> CheckIfItemExistsAsync(string name)
         {
-            return await _items.AnyAsync(i => i.ItemName.Value == name);
+            return await _items.AnyAsync(i => i.ItemName == name);
         }
 
         public Task<IEnumerable<ItemDto>> GetAsync(int minValue, int maxValue)

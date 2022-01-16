@@ -2,5 +2,5 @@
 
 namespace Example.Core.EFT.Policies
 {
-    internal record PolicyData(Price Price, ItemType Type);
+    public record PolicyData(Price Price, ItemType Type);
 }

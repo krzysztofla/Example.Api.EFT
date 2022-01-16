@@ -20,9 +20,9 @@ namespace Example.Infrastructure.EFT.EF.Queries
             var item = _items.Where(i => i.Id == query.Id).Select(i => new ItemDto()
             {
                 Id = i.Id,
-                Name = i.ItemName.Value,
+                Name = i.ItemName,
                 Price = i.Price.Value.ToString(),
-                Description =i.Description.Value,
+                Description =i.Description,
             }).SingleOrDefault();
             return item;
         }
