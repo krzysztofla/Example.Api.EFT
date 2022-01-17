@@ -20,7 +20,8 @@ namespace Example.Infrastructure.EFT.EF.Repository
 
         public async Task AddAsync(Item item, CancellationToken token)
         {
-            throw new NotImplementedException();
+            await _items.AddAsync(item);
+            await _writeContext.SaveChangesAsync();
         }
 
         public async Task<Item> GetAsync(ItemId id, CancellationToken token) => _items.AsNoTracking().SingleOrDefault(i => i.Id == id);

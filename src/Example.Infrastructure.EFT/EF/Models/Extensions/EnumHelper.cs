@@ -49,5 +49,6 @@
                     throw new ArgumentOutOfRangeException(nameof(cases), cases, null);
             }
         }
+
     }
 }

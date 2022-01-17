@@ -16,9 +16,10 @@
 
             return new PriceReadModel()
             {
-                Value = int.Parse(priceValues.Last()),
-                Currency = (CurrencyReadModel)int.Parse(priceValues.Last())
+                Value = int.Parse(priceValues.First()),
+                Currency = Enum.Parse<CurrencyReadModel>(priceValues.Last())
             };
         }
     }
 }
+

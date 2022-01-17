@@ -10,6 +10,7 @@ namespace Example.Infrastructure.EFT.EF.Config
         public void Configure(EntityTypeBuilder<ItemReadModel> builder)
         {
             builder.ToTable("Items");
+
             builder.HasKey(k => k.Id);
 
             builder.Property(i => i.Price)
