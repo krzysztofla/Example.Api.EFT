@@ -1,6 +1,7 @@
 ﻿
 using Example.Core.EFT.Consts;
 using Example.Core.EFT.Exceptions;
+using Example.Shared.EFT.Abstractions.Exceptions;
 
 namespace Example.Core.EFT.Value_Object
 {
@@ -37,7 +38,7 @@ namespace Example.Core.EFT.Value_Object
         {
             if (price <= 0)
             {
-                throw new InvalidPriceException(ExceptionMessages.InvalidPriceValue);
+                throw new InvalidPriceException(ExceptionMessages.InvalidPriceValue, ErrorCodes.ExampleCode);
             }
             return price;
         }

@@ -1,5 +1,6 @@
 ﻿using Example.Core.EFT.Consts;
 using Example.Core.EFT.Exceptions;
+using Example.Shared.EFT.Abstractions.Exceptions;
 
 namespace Example.Core.EFT.Value_Object
 {
@@ -11,7 +12,7 @@ namespace Example.Core.EFT.Value_Object
         {
             if(id == Guid.Empty)
             {
-                throw new EmptyIdException(ExceptionMessages.EmptyIdValue);
+                throw new EmptyIdException(ExceptionMessages.EmptyIdValue, ErrorCodes.ExampleCode);
             }
             Value = id;
         }
