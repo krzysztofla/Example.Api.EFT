@@ -37,9 +37,9 @@ namespace Example.API.EFT
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Example.API.EFT v1"));
             }
 
-            app.UseCustomExceptionHandler(); 
-
             app.UseHttpsRedirection();
+
+            app.UseShared();
 
             app.UseRouting();
 

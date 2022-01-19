@@ -23,7 +23,7 @@ namespace Example.Infrastructure.EFT.EF.Queries
         {
             var exists = await _items.AnyAsync(i => i.Id == query.Id);
 
-            if (exists)
+            if (!exists)
             {
                 throw new ItemDoesntExistsException(ExceptionMessages.ItemDoesntExist, ErrorCodes.ExampleCode);
             }
