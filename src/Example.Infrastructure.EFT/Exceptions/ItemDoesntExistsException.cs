@@ -1,6 +1,6 @@
 ﻿using Example.Shared.EFT.Abstractions.Exceptions;
 
-namespace Example.Application.EFT.Exceptions
+namespace Example.Infrastructure.EFT.Exceptions
 {
     internal class ItemDoesntExistsException : EftCoreException
     {

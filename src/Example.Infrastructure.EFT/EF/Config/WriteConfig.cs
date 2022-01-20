@@ -29,6 +29,12 @@ namespace Example.Infrastructure.EFT.EF.Config
                 .HasConversion(descriptionConverter)
                 .HasColumnName("Description");
 
+            var itemTypeConverter = new ValueConverter<ItemType, int>(v => (int)v, v => (ItemType)v);
+            builder
+                .Property(typeof(ItemType), "_type")
+                .HasConversion(itemTypeConverter)
+                .HasColumnName("ItemType");
+
             var priceConverter = new ValueConverter<Price, string>(v => v.ToString(), v => Price.Build(v));
             builder
                 .Property(typeof(Price), "_price")

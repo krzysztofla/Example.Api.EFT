@@ -2,7 +2,7 @@
 
 namespace Example.Core.EFT.Policies
 {
-    internal interface IItemPolicy
+    public interface IItemPolicy
     {
         bool IsApplicable(PolicyData data);
         Price Apply(PolicyData data);

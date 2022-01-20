@@ -15,11 +15,5 @@ namespace Example.Shared.EFT.Commands
                 .WithScopedLifetime());
             return services;
         }
-
-        public static IServiceCollection RegisterApplication(this IServiceCollection services)
-        {
-            services.RegisterCommands();
-            return services;
-        }
     }
 }

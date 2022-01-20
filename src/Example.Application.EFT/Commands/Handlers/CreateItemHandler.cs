@@ -5,6 +5,7 @@ using Example.Core.EFT.Entities;
 using Example.Core.EFT.Factories;
 using Example.Core.EFT.Repositories;
 using Example.Core.EFT.Value_Object;
+using Example.Shared.EFT.Abstractions.Exceptions;
 using Example.Shared.EFT.Commands;
 
 namespace Example.Application.EFT.Commands.Handlers
@@ -29,7 +30,7 @@ namespace Example.Application.EFT.Commands.Handlers
 
             if (exists)
             {
-                throw new ItemAlreadyExistsException(ErrorMessages.ItemAlreadyExists);
+                throw new ItemAlreadyExistsException(ErrorMessages.ItemAlreadyExists, ErrorCodes.ExampleCode);
             }
 
             var itemPrice = new Price(price.itemPrice, (Currency)price.currency);

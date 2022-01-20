@@ -5,7 +5,7 @@ using Example.Core.EFT.Value_Object;
 
 namespace Example.Core.EFT.Factories
 {
-    internal class ItemFactory : IItemFactory
+    public class ItemFactory : IItemFactory
     {
         private readonly IEnumerable<IItemPolicy> _policies;
 

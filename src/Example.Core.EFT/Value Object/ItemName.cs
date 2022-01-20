@@ -3,6 +3,7 @@
     public record ItemName
     {
         public string Value { get; }
+
         public ItemName(string name)
         {
             Value = name;
