@@ -3,5 +3,5 @@ using Example.Shared.EFT.Domain;
 
 namespace Example.Core.EFT.Events
 {
-    internal record ItemTypeUpdated(ItemType type) : IDomainEvent;
+    public record ItemTypeUpdated(ItemType type) : IDomainEvent;
 }

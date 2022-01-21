@@ -1,3 +1,4 @@
+using Example.Core.EFT.Events;
 using Example.Core.EFT.Exceptions;
 using Example.Core.EFT.Factories;
 using Example.Core.EFT.Policies;
@@ -27,6 +28,22 @@ namespace Example.EFT.Tests.Core
             exception.ShouldNotBeNull();
 
             exception.ShouldBeOfType<EmptyDescriptionException>();
+        }
+
+
+        [Fact]
+        public void Check_If_UpdateDescription_Creates_Valid_Domain_Event()
+        {
+            var item = _itemFactor.CreateItem(Guid.NewGuid(), new ItemName("test"), new Price(122, Currency.PLN), ItemType.Materials, new Description("123123"));
+            item.UpdateDescription(new Description("updated_123123"));
+
+            item.Events.Count().ShouldBe(1);
+
+            var @event = item.Events.FirstOrDefault() as ItemDescriptionUpdated;
+
+            @event.ShouldNotBeNull();
+
+            @event.description.ToString().ShouldBeSameAs("updated_123123");
         }
     }
 }
