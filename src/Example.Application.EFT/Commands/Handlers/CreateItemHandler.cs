@@ -10,7 +10,7 @@ using Example.Shared.EFT.Commands;
 
 namespace Example.Application.EFT.Commands.Handlers
 {
-    internal class CreateItemHandler : ICommandHandler<CreateItem>
+    public class CreateItemHandler : ICommandHandler<CreateItem>
     {
         private readonly IItemRepository _itemRepository;
         private readonly IItemFactory _itemFactory;
