@@ -20,6 +20,12 @@ namespace Example.API.EFT.Controllers
             _commadDispatcher = commadDispatcher;
         }
 
+        [HttpGet("{page:int}")]
+        public async Task<ActionResult<List<ItemDto>>> GetPage([FromRoute] GetPage query, CancellationToken token) {
+            var result = await _queryDispatcher.DispatchAsync(query, token);
+            return Ok(result);
+        }
+
         [HttpGet("{id:guid}")]
         public async Task<ActionResult<ItemDto>> Get([FromRoute] GetItem query, CancellationToken token)
         {
