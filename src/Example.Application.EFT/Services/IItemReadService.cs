@@ -6,7 +6,7 @@ namespace Example.Application.EFT.Services
     public interface IItemReadService
     {
         Task<bool> CheckIfItemExistsAsync(string name);
-        Task<IEnumerable<ItemDto>> GetAsync(int minValue, int maxValue);
+        Task<ItemDto> GetAsync(Guid id);
         Task<IEnumerable<ItemDto>> GetAsync(ItemType type);
     }
 }

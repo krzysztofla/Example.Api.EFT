@@ -21,7 +21,7 @@ namespace Example.API.EFT.Controllers
         }
 
         [HttpGet("{page:int}")]
-        public async Task<ActionResult<List<ItemDto>>> GetPage([FromRoute] GetPage query, CancellationToken token) {
+        public async Task<ActionResult<List<ItemDto>>> GetPage([FromRoute] ListItems query, CancellationToken token) {
             var result = await _queryDispatcher.DispatchAsync(query, token);
             return Ok(result);
         }

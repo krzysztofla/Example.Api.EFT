@@ -10,24 +10,22 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Example.Infrastructure.EFT.EF.Queries
 {
-    internal class GetPageHandler : IQueryHandler<GetPage, List<ItemDto>>
+    internal class ListItemsHandler : IQueryHandler<ListItems, List<ItemDto>>
     {
         private readonly DbSet<ItemReadModel> _items;
 
-        public GetPageHandler(ReadDbContext context)
+        public ListItemsHandler(ReadDbContext context)
         {
             _items = context.Items;
         }
 
-        public async Task<List<ItemDto>> HandleAsync(GetPage query, CancellationToken token)
-        {
-            var pageSize = 50;
-
+        public async Task<List<ItemDto>> HandleAsync(ListItems query, CancellationToken token)
+        {            
             if (query.Page == 0) {
                 query.Page = 1;
             }
 
-            var items = await _items.Skip((query.Page -1) * pageSize).Take(pageSize).ToListAsync();
+            var items = await _items.Skip((query.Page -1) * query.PageSize).Take(query.PageSize).ToListAsync();
 
             var itemDtos = items.Select(i => new ItemDto()
             {

@@ -1,7 +1,10 @@
 ﻿using Example.Core.EFT.Entities;
 using Example.Core.EFT.Repositories;
 using Example.Core.EFT.Value_Object;
+using Example.Infrastructure.EFT.Consts;
 using Example.Infrastructure.EFT.EF.Context;
+using Example.Infrastructure.EFT.Exceptions;
+using Example.Shared.EFT.Abstractions.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Example.Infrastructure.EFT.EF.Repository
@@ -10,7 +13,7 @@ namespace Example.Infrastructure.EFT.EF.Repository
     {
         private readonly DbSet<Item> _items;
         private readonly WriteDbContext _writeContext;
-             
+
 
         public PostgresDbItemRepository(WriteDbContext context)
         {
@@ -24,7 +27,17 @@ namespace Example.Infrastructure.EFT.EF.Repository
             await _writeContext.SaveChangesAsync();
         }
 
-        public async Task<Item> GetAsync(ItemId id, CancellationToken token) => _items.AsNoTracking().SingleOrDefault(i => i.Id == id);
+        public async Task<Item> GetAsync(ItemId id, CancellationToken token)
+        {
+            var item = await _items.AsNoTracking().SingleOrDefaultAsync(i => i.Id == id);
+
+            if (item is null)
+            {
+                throw new ItemDoesntExistsException(ExceptionMessages.ItemDoesntExist, ErrorCodes.ExampleCode);
+            }
+
+            return item;
+        }
 
         public async Task<IEnumerable<Item>> RemoveAsync(Item item, CancellationToken token)
         {
